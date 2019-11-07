@@ -1,0 +1,26 @@
+{
+  "name": "facedetector_backend",
+  "version": "1.0.0",
+  "description": "Backend for FaceDetector project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaroslaviy/FaceDetector-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yaroslaviy/FaceDetector-backend/issues"
+  },
+  "homepage": "https://github.com/yaroslaviy/FaceDetector-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}

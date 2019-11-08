@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
+const bcrypt = require('bcryptjs');
+const cors = require('cors');
 
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
+
 const database = {
     users:[
         {
@@ -27,16 +31,20 @@ app.get('/', (req,res) => {
 })
 
 app.post('/signin', (req,res) => {
-    
     if (req.body.email === database.users[0].email &&
         req.body.password === database.users[0].password)
-        res.json('success');
+        res.json(database.users[0]);
     else
         res.status(400).json('error logging in')
 })
 
 app.post('/register', (req,res) => {
     const {email, name , password} = req.body;
+    bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(password, salt, function(err, hash) {
+            console.log(hash);
+        });
+    });
     database.users.push(
         {
             id:'3',

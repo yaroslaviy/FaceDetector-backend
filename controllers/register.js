@@ -1,7 +1,18 @@
+const Joi = require('joi');
+
 const handleRegister = (req,res,db,bcrypt) => {
+    const registerSchema = Joi.object({
+        name: Joi.string().min(3).required(),
+        email: Joi.string().email().required(),
+        password: Joi.string().alphanum().min(6).required()
+    })
+
     const {email, name , password} = req.body;
-    if(!email || !name || !passoword)
-        return res.status(400).json('incorrect frm submission')
+
+    const {error, value} = registerSchema.validate(req.body);
+    console.log(error, value)
+    if(error)
+        return res.status(400).json('incorrect form submission')
     const hash = bcrypt.hashSync(password);
     db.transaction(trx => {
         trx.insert({

@@ -10,9 +10,9 @@ const handleRegister = (req,res,db,bcrypt) => {
     const {email, name , password} = req.body;
 
     const {error, value} = registerSchema.validate(req.body);
-    console.log(error, value)
+    
     if(error)
-        return res.status(400).json('incorrect form submission')
+        return res.status(400).json(error.details[0].message)
     const hash = bcrypt.hashSync(password);
     db.transaction(trx => {
         trx.insert({

@@ -8,3 +8,4 @@ Backend for FaceDetector project
 * `express`
 * `knex`
 * `pg`
+* `joi`

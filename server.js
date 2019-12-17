@@ -26,7 +26,7 @@ app.get('/', (req,res) => {res.send(database.users)})
 
 app.post('/signin',(req,res) => {signin.handleSignin(req,res,db,bcrypt)} )
 
-app.post('/register', (req,res) => {register.handleRequest(req,res,db,bcrypt)})
+app.post('/register', (req,res) => {register.handleRegister(req,res,db,bcrypt)})
 
 app.get('/profile/:id', (req,res)=>{profile.handleProfile(req,res,db)})
 

@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const handleSignin = (req,res, db, bcrypt) => {
     const registerSchema = Joi.object({
-        name: Joi.string().min(3).required(),
+        email: Joi.string().email().required(),
         password: Joi.string().alphanum().required()
     })
 
